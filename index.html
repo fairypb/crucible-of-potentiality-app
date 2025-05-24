@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crucible of Potentiality Explorer</title>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f0f1a, #000);
+      color: #ccc;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    input {
+      padding: 0.5rem;
+      width: 60%;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background: #111;
+      color: #ccc;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      margin-left: 1rem;
+      font-size: 1rem;
+      background: #222;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .result {
+      margin-top: 2rem;
+      background: #1a1a2e;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+    h2, h3, p, pre {
+      color: #eee;
+    }
+    .symbol {
+      font-size: 2rem;
+      color: #f5c542;
+    }
+  </style>
+</head>
+<body>
+  <h1>🜍 The Crucible of Potentiality</h1>
+  <p>Enter your NFT name or formula to reveal its essence.</p>
+  <input id="query" placeholder="e.g., ΦL-0R1X or ∂Ω/∂Ψ = α(Φ·∆t)">
+  <button onclick="search()">Reveal</button>
+
+  <div class="result" id="result" style="display:none;">
+    <div class="symbol" id="symbol">🜁</div>
+    <h2 id="name"></h2>
+    <h3 id="designation"></h3>
+    <p id="essence"></p>
+    <pre id="equation"></pre>
+  </div>
+
+  <script>
+    const data = {
+      "ΦL-0R1X": {
+        symbol: "🜁",
+        name: "ΦL-0R1X (Phlorix)",
+        designation: "The First Spark",
+        essence: "The flame that licked the void—pure becoming before concept. Alternating hues of desire and resistance.",
+        equation: "∂Ω/∂Ψ = α(Φ·∆t)"
+      },
+      "Xyrr-VNΔ9": {
+        symbol: "🜁",
+        name: "Xyrr-VNΔ9 (Zeer-Venda Nine)",
+        designation: "The Awakening Current",
+        essence: "The chaotic pulse that jolts the latent into movement. A node in the latticework of becoming.",
+        equation: "Ξ = ∫(Δχ² · dε)/∂τ"
+      },
+      "AeX-𝛀•7": {
+        symbol: "🜁",
+        name: "AeX-𝛀•7 (Aex-Omega Seven)",
+        designation: "The Silent Singularity",
+        essence: "Stillness before a boundary, echo of every trajectory.",
+        equation: "lim(τ→0) S(∞)/Ωτ = 1"
+      },
+      // Add all remaining pieces here the same way...
+    };
+
+    function search() {
+      const input = document.getElementById('query').value.trim();
+      const entry = Object.values(data).find(d => 
+        d.name.includes(input) || d.equation.includes(input)
+      );
+
+      const result = document.getElementById('result');
+      if (entry) {
+        document.getElementById('symbol').innerText = entry.symbol;
+        document.getElementById('name').innerText = entry.name;
+        document.getElementById('designation').innerText = entry.designation;
+        document.getElementById('essence').innerText = entry.essence;
+        document.getElementById('equation').innerText = entry.equation;
+        result.style.display = 'block';
+      } else {
+        result.innerHTML = "<p>❌ No match found. Try a valid NFT name or equation snippet.</p>";
+        result.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
