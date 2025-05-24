@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crucible of Potentiality</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="data.js"></script>
-  <script src="script.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>🌀 The Crucible of Potentiality</h1>
+    <h1>🜁 The Crucible of Potentiality</h1>
     <label for="nftSelector">Choose an NFT:</label>
     <select id="nftSelector"></select>
-    <div id="nftData"></div>
+    <div class="nftData">
+      <h2 id="Name"></h2>
+      <p id="Designation"></p>
+      <p id="Essence"></p>
+      <p><strong>Formula:</strong> <code id="Formula"></code></p>
+      <canvas id="formulaCanvas" width="400" height="400"></canvas>
+      <div id="formulaExplanation"></div>
+    </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
