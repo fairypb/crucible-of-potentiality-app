@@ -5,6 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crucible of Potentiality</title>
   <style>
+     /* Starry Night Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 200px 90px, #fff, transparent),
+        radial-gradient(1px 1px at 240px 50px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 280px 120px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 320px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 360px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 400px 20px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 440px 100px, #fff, transparent),
+        radial-gradient(1px 1px at 480px 60px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 520px 130px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 80px 120px, #fff, transparent),
+        radial-gradient(1px 1px at 120px 20px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 180px 110px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 220px 10px, #fff, transparent),
+        radial-gradient(1px 1px at 260px 140px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 300px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 340px 15px, #fff, transparent),
+        radial-gradient(1px 1px at 380px 110px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 420px 80px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 460px 25px, #fff, transparent),
+        radial-gradient(1px 1px at 500px 95px, rgba(255,255,255,0.7), transparent);
+      background-repeat: repeat;
+      background-size: 550px 400px;
+      animation: twinkle 20s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #0a0a0a;
