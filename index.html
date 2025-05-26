@@ -1041,6 +1041,7 @@
       const resultsSection = document.getElementById('resultsSection');
       resultsSection.innerHTML = `
         <div class="card">
+          <img src="images/${nft.image}" alt="${nft.name}" class="nft-image">
           <h2>${nft.symbol} ${nft.name}</h2>
           <div class="designation">${nft.designation}</div>
           <div class="equation">${nft.equation}</div>
@@ -1054,6 +1055,7 @@
       const resultsSection = document.getElementById('resultsSection');
       const cardsHTML = results.map(nft => `
         <div class="card">
+          <img src="images/${nft.image}" alt="${nft.name}" class="nft-image">
           <h2>${nft.symbol} ${nft.name}</h2>
           <div class="designation">${nft.designation}</div>
           <div class="equation">${nft.equation}</div>
