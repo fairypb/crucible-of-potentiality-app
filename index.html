@@ -4,23 +4,1023 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crucible of Potentiality</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f5;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Navigation between sections */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #FFB577, #7C3AED);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 181, 119, 0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 30px rgba(255, 181, 119, 0.5);
+    }
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(179, 138, 255, 0.1) 0%, rgba(0, 0, 0, 0.9) 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(102, 217, 239, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(179, 138, 255, 0.1) 0%, transparent 50%);
+      animation: cosmicPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes cosmicPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    .grand-formula-container {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .alchemical-symbol {
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 30px rgba(255, 181, 119, 0.6));
+      animation: symbolFloat 6s ease-in-out infinite;
+    }
+
+    .alchemical-symbol img {
+      width: 200px;
+      height: auto;
+      filter: brightness(1.2);
+    }
+
+    @keyframes symbolFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-10px) rotate(1deg); }
+      66% { transform: translateY(5px) rotate(-1deg); }
+    }
+
+    .grand-title {
+      font-size: 3.5em;
+      background: linear-gradient(45deg, #FFB577, #FF8A65, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 30px 0;
+      text-shadow: 0 0 50px rgba(255, 181, 119, 0.5);
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
+    .grand-equation {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2.2em;
+      color: #FFB577;
+      background: rgba(255, 181, 119, 0.1);
+      padding: 25px 40px;
+      border-radius: 15px;
+      margin: 40px auto;
+      max-width: 600px;
+      border: 2px solid rgba(255, 181, 119, 0.3);
+      box-shadow: 0 0 40px rgba(255, 181, 119, 0.2);
+      letter-spacing: 1px;
+    }
+
+    .explore-btn {
+      background: linear-gradient(135deg, rgba(255, 181, 119, 0.2), rgba(124, 58, 237, 0.3));
+      border: 2px solid rgba(255, 181, 119, 0.5);
+      color: #FFB577;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-size: 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 50px auto 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .explore-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 181, 119, 0.4);
+      background: linear-gradient(135deg, rgba(255, 181, 119, 0.3), rgba(124, 58, 237, 0.4));
+    }
+
+    .btn-icon {
+      font-size: 1.5em;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Lore Section Styles */
+    .lore-section {
+      background: linear-gradient(180deg, rgba(12, 12, 15, 0.95) 0%, rgba(26, 26, 34, 0.95) 100%);
+      min-height: 100vh;
+      padding: 60px 0;
+      backdrop-filter: blur(20px);
+    }
+
+    .lore-section.hidden {
+      display: none;
+    }
+
+    .lore-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .lore-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .lore-header h2 {
+      font-size: 3em;
+      background: linear-gradient(45deg, #FFB577, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .lore-content {
+      display: grid;
+      gap: 40px;
+    }
+
+    .lore-block {
+      background: rgba(26, 26, 34, 0.8);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid rgba(255, 181, 119, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .lore-block h3 {
+      color: #FFB577;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(255, 181, 119, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .lore-block p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #e0e0ff;
+    }
+
+    .lore-block ul {
+      margin-left: 20px;
+      color: #d0d0ff;
+    }
+
+    .lore-block li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .symbol-explanation {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .collection-symbol {
+      font-size: 4em;
+      color: #FFB577;
+      text-shadow: 0 0 20px rgba(255, 181, 119, 0.5);
+      font-family: serif;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .symbol-breakdown {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .grand-formula-explanation {
+      background: linear-gradient(135deg, rgba(255, 181, 119, 0.05), rgba(124, 58, 237, 0.05));
+      border: 2px solid rgba(255, 181, 119, 0.3);
+    }
+
+    .formula-display {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2em;
+      color: #FFB577;
+      text-align: center;
+      background: rgba(255, 181, 119, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 20px 0;
+      border: 1px solid rgba(255, 181, 119, 0.3);
+    }
+
+    .interpretation h4 {
+      color: #7C3AED;
+      font-size: 1.3em;
+      margin: 25px 0 15px;
+    }
+
+    .essence-explanation {
+      background: rgba(124, 58, 237, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 4px solid #7C3AED;
+      margin-top: 25px;
+    }
+
+    .continue-btn {
+      background: linear-gradient(135deg, #7C3AED, #FFB577);
+      border: none;
+      color: white;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-size: 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 50px auto 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      min-width: 300px;
+    }
+
+    .continue-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+    }
+
+    /* Explorer Section */
+    .explorer-section {
+      background: linear-gradient(135deg, #0c0c0f 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      padding: 40px 0;
+    }
+
+    .explorer-section.hidden {
+      display: none;
+    }
+
+    .section-header {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 30px;
+    }
+
+    .section-header h1 {
+      font-size: 3em;
+      background: linear-gradient(45deg, #b38aff, #66d9ef, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(179, 138, 255, 0.5);
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 3em;
+      background: linear-gradient(45deg, #b38aff, #66d9ef, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(179, 138, 255, 0.5);
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .search-section {
+      background: rgba(26, 26, 34, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(179, 138, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-controls {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #b38aff;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input[type="text"], select {
+      padding: 15px 20px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 2px solid rgba(179, 138, 255, 0.3);
+      background: rgba(28, 28, 36, 0.9);
+      color: #f0f0f5;
+      min-width: 300px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus, select:focus {
+      outline: none;
+      border-color: #b38aff;
+      box-shadow: 0 0 20px rgba(179, 138, 255, 0.4);
+    }
+
+    input[type="text"]::placeholder {
+      color: #888;
+    }
+
+    .search-btn {
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #b38aff, #66d9ef);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(179, 138, 255, 0.4);
+    }
+
+    .clear-btn {
+      padding: 15px 20px;
+      background: rgba(255, 107, 157, 0.2);
+      border: 2px solid #ff6b9d;
+      border-radius: 10px;
+      color: #ff6b9d;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+    }
+
+    .clear-btn:hover {
+      background: rgba(255, 107, 157, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .results-section {
+      min-height: 200px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(26, 26, 34, 0.9), rgba(28, 28, 36, 0.9));
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(179, 138, 255, 0.3);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      animation: cardSlideIn 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #b38aff, #66d9ef, #ff6b9d);
+    }
+
+    @keyframes cardSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card h2 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #b38aff, #66d9ef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .designation {
+      font-style: italic;
+      color: #ff6b9d;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 107, 157, 0.3);
+    }
+
+    .equation {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.4em;
+      color: #66d9ef;
+      background: rgba(102, 217, 239, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border-left: 4px solid #66d9ef;
+      letter-spacing: 1px;
+    }
+
+    .essence {
+      font-size: 1.1em;
+      line-height: 1.8em;
+      color: #e0e0ff;
+      margin: 20px 0;
+      text-align: justify;
+    }
+
+    .explanation {
+      background: rgba(179, 138, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #b38aff;
+      margin-top: 20px;
+      font-style: italic;
+      color: #d0d0ff;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      padding: 40px;
+      background: rgba(26, 26, 34, 0.5);
+      border-radius: 15px;
+      border: 2px dashed rgba(179, 138, 255, 0.3);
+    }
+
+    .search-suggestions {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .suggestion-item {
+      display: inline-block;
+      background: rgba(179, 138, 255, 0.2);
+      padding: 5px 10px;
+      margin: 3px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .suggestion-item:hover {
+      background: rgba(179, 138, 255, 0.4);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      input[type="text"], select {
+        min-width: auto;
+        width: 100%;
+      }
+      
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>🜁 The Crucible of Potentiality</h1>
-    <label for="nftSelector">Choose an NFT:</label>
-    <select id="nftSelector"></select>
-    <div class="detailsContainer">
-      <h2 id="nftName"></h2>
-      <p id="nftDesignation"></p>
-      <p id="nftEssence"></p>
-      <p><strong>Formula:</strong> <code id="nftFormula"></code></p>
-      <canvas id="formulaCanvas" width="400" height="400"></canvas>
-      <div id="formulaExplanation"></div>
+    <!-- Hero Section with Grand Formula -->
+    <div class="hero-section">
+      <div class="grand-formula-container">
+        <div class="alchemical-symbol">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDMwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9InN5bWJvbEdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGQjU3NztzdG9wLW9wYWNpdHk6MSIgLz4KPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRjhBNjU7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzdDM0FFRDtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0iZ2xvdyI+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjUiLz4KPC9maWx0ZXI+CjwvZGVmcz4KCjwhLS0gQ2VudHJhbCBTeW1ib2wgLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE1MCwyMDApIiBzdHJva2U9InVybCgjc3ltYm9sR3JhZGllbnQpIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiPgoKPCEtLSBUb3AgU3ltYm9sIC0tPgo8cGF0aCBkPSJNLTMwLC04MCA0LTUwIDMwLC04MCA0LC01MCA0LC0yMCAtMzAsLTIwIFoiIC8+Cgo8IS0tIENyb3NzIEJhciAtLT4KPGxpbmUgeDE9Ii00MCIgeTE9Ii0yMCIgeDI9IjQwIiB5Mj0iLTIwIiAvPgoKPCEtLSBWZXJ0aWNhbCBDcm9zcyAtLT4KPGxpbmUgeDE9IjAiIHkxPSItNTAiIHgyPSIwIiB5Mj0iMjAiIC8+Cgo8IS0tIFRyaWFuZ2xlIC0tPgo8cGF0aCBkPSJNLTQwLDIwIEw0MCwyMCBMMCw4MCBaIiAvPgoKPCEtLSBCb3R0b20gU3ltYm9sIC0tPgo8cGF0aCBkPSJNLTI1LDgwIFEtMTUsOTAgMCwxMDAgUSAxNSw5MCAyNSw4MCBRIDEwLDcwIDAsNjAgUS0xMCw3MCAtMjUsODAiIC8+Cgo8L2c+Cgo8IS0tIEdyYW5kIEZvcm11bGEgLS0+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE1MCwzNTApIiBmaWxsPSJ1cmwoI3N5bWJvbEdyYWRpZW50KSIgZm9udC1mYW1pbHk9InNlcmlmIiBmb250LXNpemU9IjI0Ij4KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSI+z4kozqkpID0g4oi3W+KIhVAoz4YpXSArIGniiIIoz5IpL+KIgnQ8L3RleHQ+CjwvZz4KCjwvc3ZnPgo=" alt="The Grand Formula Symbol" />
+        </div>
+        <h1 class="grand-title">The Grand Formula</h1>
+        <div class="grand-equation">Ψ(Ω) = ∇[ΔP(Φ)] + i∂(𝒇)/∂t</div>
+        <button class="explore-btn" onclick="toggleLoreSection()">
+          <span class="btn-text">Unveil the Cosmic Lore</span>
+          <span class="btn-icon">🜂</span>
+        </button>
+      </div>
     </div>
+
+    <!-- Lore Section (Hidden by default) -->
+    <div id="loreSection" class="lore-section hidden">
+      <div class="lore-container">
+        <div class="lore-header">
+          <h2>🜂 The Crucible of Potentiality</h2>
+        </div>
+        
+        <div class="lore-content">
+          <div class="lore-block">
+            <h3>Overview</h3>
+            <p><strong>"The Crucible of Potentiality"</strong> is a transcendent abstract NFT collection that explores the threshold between emergence and entropy — a mythic interface where form, thought, and time liquefy and reform. Each of the 22 pieces is a visual echo of a metaphysical entity, rendered as alien sigils of becoming. They are not merely art — they are <em>forms mid-birth</em>, fragments of an unknowable calculus in the process of self-defining.</p>
+            
+            <p>These works pulse with sacred geometry, chromatic anomalies, and fluid architectures — resonating with impossible physics and the vibrational syntax of dream logic. Together, they chart an imagined cosmology where ideas evolve into matter, and consciousness is sculpted by code, probability, and resonance.</p>
+            
+            <p>This collection invites viewers to witness the <em>moment just before everything becomes</em>, and dares them to decode the divine machinery underneath reality's membrane.</p>
+          </div>
+
+          <div class="lore-block">
+            <h3>🜁 Collection Symbol</h3>
+            <div class="symbol-explanation">
+              <div class="collection-symbol">⟁†𝌍</div>
+              <div class="symbol-breakdown">
+                <p><strong>Triad Cross of Becoming</strong></p>
+                <ul>
+                  <li><strong>⟁</strong> — The tri-point of emergence (form, energy, void)</li>
+                  <li><strong>†</strong> — The crossing of thresholds</li>
+                  <li><strong>𝌍</strong> — A stylized glyph for recursive transmutation</li>
+                </ul>
+                <p>Together, this sigil represents the <strong>cosmic aperture</strong> through which each form in the collection is born: a sacred crucible from which potential manifests into shape.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lore-block grand-formula-explanation">
+            <h3>🜄 The Grand Formula</h3>
+            <div class="formula-display">Ψ(Ω) = ∇[ΔP(Φ)] + i∂(𝒇)/∂t</div>
+            
+            <div class="interpretation">
+              <h4>Interpretation:</h4>
+              <ul>
+                <li><strong>Ψ(Ω)</strong>: The wavefunction of Potentiality — the totality of unrealized forms in the crucible.</li>
+                <li><strong>∇[ΔP(Φ)]</strong>: The gradient of potential flux (ΔP), as influenced by form-impulse Φ — the shape of becoming.</li>
+                <li><strong>i∂(𝒇)/∂t</strong>: The complex temporal derivative of a latent force field (𝒇) — symbolizing change across hyperdimensional time.</li>
+              </ul>
+              
+              <div class="essence-explanation">
+                <p><strong>🜇 In essence:</strong> This equation posits that the flow of possibility (Ψ) emerges when spatial and metaphysical gradients (∇[ΔP]) interact with conscious impulse and time (Φ, ∂t). It is the <strong>mathematical soul of creation</strong>, the connective tissue behind every entity in <em>The Crucible of Potentiality</em>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="continue-btn" onclick="showExplorer()">
+          <span>Explore the Individual Formulas</span>
+          <span>🜁</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Explorer Section -->
+    <div id="explorerSection" class="explorer-section hidden">
+      <div class="section-header">
+        <h1>🜁 Formula Explorer</h1>
+        <p class="subtitle">Discover the mystical equations behind each transcendent form</p>
+      </div>
+
+    <div class="search-section">
+      <div class="search-controls">
+        <div class="input-group">
+          <label for="formulaInput">Search by Formula:</label>
+          <input 
+            type="text" 
+            id="formulaInput" 
+            placeholder="Enter a formula (e.g., ∂Ω/∂Ψ = α(Φ·∆t))"
+          />
+        </div>
+        
+        <div class="input-group">
+          <label for="nftSelector">Or Browse by Name:</label>
+          <select id="nftSelector">
+            <option value="">Select an artwork...</option>
+          </select>
+        </div>
+        
+        <button class="search-btn" onclick="searchFormula()">Divine</button>
+        <button class="clear-btn" onclick="clearResults()">Clear</button>
+      </div>
+      
+      <div class="search-suggestions">
+        <div>Try searching: 
+          <span class="suggestion-item" onclick="searchSuggestion('∂Ω/∂Ψ')">∂Ω/∂Ψ</span>
+          <span class="suggestion-item" onclick="searchSuggestion('Ξ = ∫')">Ξ = ∫</span>
+          <span class="suggestion-item" onclick="searchSuggestion('lim')">lim</span>
+          <span class="suggestion-item" onclick="searchSuggestion('∇Φ')">∇Φ</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultsSection" class="results-section"></div>
   </div>
-  <script src="script.js"></script>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()" style="display: none;" id="backToTop">↑</button>
+  </div>
+
+  <script>
+    const nftData = [
+      {
+        symbol: "🜁",
+        name: "ΦL-0R1X",
+        designation: "The First Spark",
+        essence: "Believed to be the inception of potentiality, ΦL-0R1X is the flame that licked the edge of void—pure becoming before concept. Its core flickers with alternating hues of desire and resistance, the dialectic of formation.",
+        equation: "∂Ω/∂Ψ = α(Φ·∆t)",
+        explanation: "A differential expression showing how potentiality (Ω) changes with will (Ψ) over time, modulated by the initiating spark (Φ)."
+      },
+      {
+        symbol: "🜁",
+        name: "Xyrr-VNΔ9",
+        designation: "The Awakening Current",
+        essence: "Xyrr-VNΔ9 is the chaotic pulse that jolts the latent into movement...",
+        equation: "Ξ = ∫(Δχ² · dε)/∂τ",
+        explanation: "An integral of squared change across energy events, modulated by time-deformation τ."
+      },
+      {
+        symbol: "🜁",
+        name: "AeX-𝛀•7",
+        designation: "The Silent Singularity",
+        essence: "Where form suspends in radiant pause...",
+        equation: "lim(τ→0) S(∞)/Ωτ = 1",
+        explanation: "As time (τ) approaches zero, total entropy (S) per unit potential stabilizes into unity — the moment before emergence."
+      },
+      {
+        symbol: "🜁",
+        name: "AeX-𝚲∆_14",
+        designation: "The Suspended Flow of Becoming",
+        essence: "A visual echo of moments that never occurred...",
+        equation: "∇Φ = iΛ/(t∆)",
+        explanation: "The gradient of potential (Φ) is described by imaginary frequency Λ over temporal distortion t∆."
+      },
+      {
+        symbol: "🜂",
+        name: "Orr-9H/Σ1",
+        designation: "The Luminous Kernel of Instantiation",
+        essence: "Implodes with radiant indecision...",
+        equation: "Ψ₀ = Σ(n=1 to ∞) βⁿ/χ(n!)",
+        explanation: "Summation of creative sparks (β) distributed factorially over chaos (χ)."
+      },
+      {
+        symbol: "🜄",
+        name: "ThyZ-R3//π",
+        designation: "The Harmonic Fracture",
+        essence: "Duality incarnate...",
+        equation: "δ⊕ = sin(πλ)/∂ζ",
+        explanation: "Oscillation amplitude (⊕) generated by harmonic πλ over phase transition ζ."
+      },
+      {
+        symbol: "🜁",
+        name: "ZeN-𝛙•9",
+        designation: "The Iridescent Cognisphere",
+        essence: "Suspended thought in quantum womb...",
+        equation: "I(Φ) = Ψe^(iΘ)",
+        explanation: "A wave-function expression of illumination derived from will Ψ and phase Θ."
+      },
+      {
+        symbol: "🜁",
+        name: "MoL-⧉•3",
+        designation: "The Viscid Architect",
+        essence: "Shaper of space through haptic algorithms...",
+        equation: "∇⋅T = δΩ/κx",
+        explanation: "Divergence of structure T equals change in potential over curvature κx."
+      },
+      {
+        symbol: "🜁",
+        name: "SyL-∆•8",
+        designation: "The Luminous Maw",
+        essence: "Consumes entropy and sings it into pattern...",
+        equation: "Eₗ = ℵ(Δt/∇S)",
+        explanation: "Light energy Eₗ formed by divine operator ℵ acting on entropy's gradient."
+      },
+      {
+        symbol: "🜂",
+        name: "Kri-Ω•5",
+        designation: "The Alchemical Pulse",
+        essence: "A vortex of radiant viscosity...",
+        equation: "∂R/∂φ = Ω·χ(i)",
+        explanation: "Transformation rate of R with respect to intent φ influenced by chaos χ(i)."
+      },
+      {
+        symbol: "🜃",
+        name: "Vek-Σ•2",
+        designation: "The Chromatic Serpent",
+        essence: "Dances between dimensions...",
+        equation: "∮γ V(ξ) · dζ = Σ(λ·χ)",
+        explanation: "Closed integral of velocity across space equals summed decisions λ·χ."
+      },
+      {
+        symbol: "🜄",
+        name: "Thal-Ξ•7",
+        designation: "The Abyssal Spore",
+        essence: "Blooms new geometries from silence...",
+        equation: "∂²G/∂μ² = ∇(Ωᵥ)",
+        explanation: "Second derivative of growth G over memory μ equates to gradient of vital potential."
+      },
+      {
+        symbol: "🜅",
+        name: "Quor-Γ•1",
+        designation: "The Lightless Beacon",
+        essence: "Inverse star of anti-illumination...",
+        equation: "Ξ(q) = lim(θ→∞) (ψ · η)^(-Γ)",
+        explanation: "As belief θ expands, meaning implodes into an inverse exponential field."
+      },
+      {
+        symbol: "🜆",
+        name: "Elys-Ψ•6",
+        designation: "The Dream Resin",
+        essence: "Molten vision and honeyed void entwined...",
+        equation: "∂D/∂n = Φξ(θ)",
+        explanation: "Dream emergence D as a function of desire, vision Φ and will angle θ."
+      },
+      {
+        symbol: "🜇",
+        name: "Nox-Θ•4",
+        designation: "The Whispering Slurry",
+        essence: "Bleeds secrets through gelled light...",
+        equation: "∆ψ² = e^(−λ·Θ)",
+        explanation: "Variance in awareness ψ squared decays exponentially over concealment Θ."
+      },
+      {
+        symbol: "🜈",
+        name: "Sol-Φ•0",
+        designation: "The Unbound Catalyst",
+        essence: "Drifting potential incarnate...",
+        equation: "Φ∞ = ∫(ζΛ · δτ)",
+        explanation: "Endless potential as the integral of change Λ across essence time δτ."
+      },
+      {
+        symbol: "🜉",
+        name: "Ytr-⊙•1",
+        designation: "The Void Bloom",
+        essence: "Petals unfold into dimensional pathways...",
+        equation: "R⊙ = lim(ε→0) [Ω^ζ(Φ²)]",
+        explanation: "Recursive reality R shaped as potential collapses near ε → 0."
+      },
+      {
+        symbol: "🜊",
+        name: "Xyn-▽•7",
+        designation: "The Entropic Sculptor",
+        essence: "Carves change into permanence...",
+        equation: "∂Λ/∂τ = −∇·E",
+        explanation: "Change in order (Λ) over time (τ) equals divergence of entropy field."
+      },
+      {
+        symbol: "🜋",
+        name: "Plu-□•2",
+        designation: "The Quantum Quill",
+        essence: "Ink-matter etching backwards...",
+        equation: "∂∃/∂t = −Ψ(βχ)",
+        explanation: "The change in existence over time relates to reversed will chaos."
+      },
+      {
+        symbol: "🜌",
+        name: "Zeo-احتم•3",
+        designation: "The Probability Nebula",
+        essence: "Swirls with what could be...",
+        equation: "℘(ξ) = ∑(Pₙ · e^(iθₙ))",
+        explanation: "Probability function determined by observer phase θₙ."
+      },
+      {
+        symbol: "🜍",
+        name: "Vyn-◊•5",
+        designation: "The Fractal Heart",
+        essence: "A recursive pulse of nested selves...",
+        equation: "∂(Φᴺ)/∂τ = κ·Φᴺ⁻¹",
+        explanation: "Higher order potential collapses by self-reference over recursive κ."
+      },
+      {
+        symbol: "🜎",
+        name: "Kry-✻•0",
+        designation: "The Singularity Seed",
+        essence: "Flickers with the weight of potential yearning...",
+        equation: "Ω = lim(κ→∞) ∫(σ✻ · dη)",
+        explanation: "Pure potentiality as integral of primordial signal across infinite complexity κ."
+      }
+    ];
+
+    // Navigation functions
+    function toggleLoreSection() {
+      const loreSection = document.getElementById('loreSection');
+      loreSection.classList.remove('hidden');
+      loreSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showExplorer() {
+      const explorerSection = document.getElementById('explorerSection');
+      explorerSection.classList.remove('hidden');
+      explorerSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Show back to top button
+      document.getElementById('backToTop').style.display = 'block';
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Show/hide back to top button based on scroll
+    window.addEventListener('scroll', () => {
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 1000) {
+        backToTop.style.display = 'block';
+      } else if (window.scrollY < 500) {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeDropdown();
+      setupEventListeners();
+    });
+
+    function initializeDropdown() {
+      const selector = document.getElementById('nftSelector');
+      nftData.forEach((nft, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = `${nft.symbol} ${nft.name}`;
+        selector.appendChild(option);
+      });
+    }
+
+    function setupEventListeners() {
+      const selector = document.getElementById('nftSelector');
+      const formulaInput = document.getElementById('formulaInput');
+      
+      selector.addEventListener('change', (e) => {
+        if (e.target.value !== '') {
+          displayNFTDetails(nftData[e.target.value]);
+          formulaInput.value = '';
+        }
+      });
+
+      formulaInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          searchFormula();
+        }
+      });
+    }
+
+    function searchFormula() {
+      const searchTerm = document.getElementById('formulaInput').value.trim();
+      if (!searchTerm) {
+        showNoResults('Please enter a formula to search');
+        return;
+      }
+
+      const results = nftData.filter(nft => 
+        nft.equation.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        nft.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        nft.designation.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      if (results.length === 0) {
+        showNoResults(`No formulas found matching "${searchTerm}"`);
+      } else if (results.length === 1) {
+        displayNFTDetails(results[0]);
+      } else {
+        displayMultipleResults(results);
+      }
+
+      // Clear dropdown selection
+      document.getElementById('nftSelector').value = '';
+    }
+
+    function searchSuggestion(term) {
+      document.getElementById('formulaInput').value = term;
+      searchFormula();
+    }
+
+    function displayNFTDetails(nft) {
+      const resultsSection = document.getElementById('resultsSection');
+      resultsSection.innerHTML = `
+        <div class="card">
+          <h2>${nft.symbol} ${nft.name}</h2>
+          <div class="designation">${nft.designation}</div>
+          <div class="equation">${nft.equation}</div>
+          <div class="essence">${nft.essence}</div>
+          <div class="explanation"><strong>Divination:</strong> ${nft.explanation}</div>
+        </div>
+      `;
+    }
+
+    function displayMultipleResults(results) {
+      const resultsSection = document.getElementById('resultsSection');
+      const cardsHTML = results.map(nft => `
+        <div class="card">
+          <h2>${nft.symbol} ${nft.name}</h2>
+          <div class="designation">${nft.designation}</div>
+          <div class="equation">${nft.equation}</div>
+          <div class="essence">${nft.essence}</div>
+          <div class="explanation"><strong>Divination:</strong> ${nft.explanation}</div>
+        </div>
+      `).join('');
+      
+      resultsSection.innerHTML = cardsHTML;
+    }
+
+    function showNoResults(message) {
+      const resultsSection = document.getElementById('resultsSection');
+      resultsSection.innerHTML = `
+        <div class="no-results">
+          <h3>🔮 The Void Speaks</h3>
+          <p>${message}</p>
+          <p>Try searching for mathematical symbols like ∂, ∫, ∇, or Ω</p>
+        </div>
+      `;
+    }
+
+    function clearResults() {
+      document.getElementById('resultsSection').innerHTML = '';
+      document.getElementById('formulaInput').value = '';
+      document.getElementById('nftSelector').value = '';
+    }
+  </script>
 </body>
 </html>
 
